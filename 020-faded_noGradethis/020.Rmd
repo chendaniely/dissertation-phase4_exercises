@@ -1,0 +1,53 @@
+---
+title: "ds4biomed"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: false
+runtime: shiny_prerendered
+---
+
+```{r, include=FALSE, child="../010-setup.Rmd"}
+```
+
+```{r,  child="../020-010-pre_workshop_exercise.Rmd"}
+```
+
+## Exercise 1
+
+```{r,  child="../030-005-exercise_1_setup.Rmd"}
+```
+
+```{r,  child="../030-010-exercise_1_prompt.Rmd"}
+```
+
+```{r,  child="../030-030-exercise_1_faded.Rmd"}
+```
+
+## Exercise 2
+
+```{r, child="../040-010-exercise_2_setup.Rmd"}
+```
+
+```{r, child="../040-020-exercise_2_prompt.Rmd"}
+```
+
+```{r, child="../040-040-exercise_2_faded.Rmd"}
+```
+
+
+## Exercise 3
+
+```{r, child="../050-010-exercise_3_setup.Rmd"}
+```
+
+```{r, child="../050-020-exercise_3_prompt.Rmd"}
+```
+
+```{r, child="../050-040-exercise_3_faded.Rmd"}
+```
+
+## Summative
+
+```{r, child="../060-010-exercise_summ_prompt.Rmd"}
+```
