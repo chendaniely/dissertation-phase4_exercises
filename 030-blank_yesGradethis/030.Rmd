@@ -24,6 +24,9 @@ runtime: shiny_prerendered
 ```{r,  child="../030-020-exercise_1_blank.Rmd"}
 ```
 
+```{r,  child="../030-040-exercise_1_gradethis.Rmd"}
+```
+
 
 ## Exercise 2
 
