@@ -21,12 +21,7 @@ runtime: shiny_prerendered
 ```{r,  child="../030-010-exercise_1_prompt.Rmd"}
 ```
 
-```{r ex1}
-#| exercise=TRUE,
-#| exercise.lines = 5,
-#| exercise.reveal_solution = FALSE
-
-
+```{r,  child="../030-020-exercise_1_blank.Rmd"}
 ```
 
 
@@ -38,12 +33,7 @@ runtime: shiny_prerendered
 ```{r, child="../040-020-exercise_2_prompt.Rmd"}
 ```
 
-```{r ex2}
-#| exercise=TRUE,
-#| exercise.lines = 5,
-#| exercise.reveal_solution = FALSE
-
-
+```{r, child="../040-030-exercise_2_blank.Rmd"}
 ```
 
 ## Exercise 3
@@ -54,13 +44,7 @@ runtime: shiny_prerendered
 ```{r, child="../050-020-exercise_3_prompt.Rmd"}
 ```
 
-
-```{r ex3}
-#| exercise=TRUE,
-#| exercise.lines = 5,
-#| exercise.reveal_solution = FALSE
-
-
+```{r, child="../050-030-exercise_3_blank.Rmd"}
 ```
 
 ## Summative

@@ -1,0 +1,7 @@
+```{r ex3}
+#| exercise=TRUE,
+#| exercise.lines = 5,
+#| exercise.reveal_solution = FALSE
+
+
+```
