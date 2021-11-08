@@ -1,0 +1,12 @@
+This is a different version of the `ebola` dataset.
+
+```{r, echo=FALSE}
+.ebola_ex2
+```
+
+- Tidy the dataset such that you get the dataset below
+- Remember to drop missing values as the last step
+
+```{r, echo=FALSE}
+solution_tidy2
+```

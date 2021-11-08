@@ -1,0 +1,32 @@
+## Pre-Workshop Exercise
+
+Please write the code for the following pipeline steps:
+
+1.  Load the `tidyverse` and `readxl` libraries.
+2.  Read in the Excel file located in: `"data/medicaldata_tumorgrowth.xlsx"` into a variable `tumor`.
+3.  Select the all the columns except `Grp`, and filter the rows such that Day is `0` or `20`. Save this data subset into a variable `tumor_subset`.
+4.  We want to compare baseline tumor sizes (Day 0) with tumor sizes at Day 20 between each of the groups.
+    - Using `tumor_subset`, calculate the average tumor `Size` for each `Grp` and `Day`.
+5.  Save `tumor_subset` into a CSV file located in "data/tumorsubset.csv".
+
+```{r pre-workshop, echo=FALSE, exercise=TRUE, exercise.lines = 20}
+
+```
+
+```{r, include=FALSE}
+# solution
+library(tidyverse)
+library(readxl)
+
+.tumor <- read_excel("data/medicaldata_tumorgrowth.xlsx")
+
+.tumor_subset <- .tumor %>%
+  select(-Grp) %>%
+  filter(Day == 0 | Day == 20)
+
+.tumor_subset %>%
+  group_by(Group, Day) %>%
+  summarize(mean(Size))
+
+write_csv(.tumor_subset, "data/tumorsubset_solution.csv")
+```

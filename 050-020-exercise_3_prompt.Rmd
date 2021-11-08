@@ -1,0 +1,12 @@
+Using the same `ebola` dataset example from the previous exercise:
+
+```{r, echo=FALSE}
+.ebola_ex2
+```
+
+- Tidy the dataset such that it looks like the below example
+- Remember to drop missing values as the last step
+
+```{r, echo=FALSE}
+solution_tidy3
+```

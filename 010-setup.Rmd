@@ -1,0 +1,86 @@
+---
+title: "global_setup"
+author: "Daniel Chen"
+date: "11/7/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(medicaldata)
+library(janitor)
+library(learnr)
+library(gradethis)
+library(fs)
+library(readxl)
+library(gradethis)
+library(writexl)
+
+knitr::opts_chunk$set(echo = FALSE)
+gradethis::gradethis_setup()
+
+fs::dir_create("data")
+
+# you need the wb mode to download excel files
+download.file("https://github.com/chendaniely/ds4biomed/blob/learner/data/medicaldata_tumorgrowth.xlsx?raw=true", "data/medicaldata_tumorgrowth.xlsx", mode = "wb")
+
+download.file("https://raw.githubusercontent.com/cmrivers/ebola/master/country_timeseries.csv", "data/ebola.csv")
+
+.ebola_csv <- read_csv("data/ebola.csv")
+
+.ebola_baseline_tidy <- .ebola_csv %>%
+  rename(date = Date, day = Day) %>%
+  pivot_longer(cols = c(-date, -day)) %>%
+  separate(name, into = c("case_death", "country"), sep = "_") %>%
+  pivot_wider(names_from = case_death, values_from = value) %>%
+  rename(cases = Cases, deaths = Deaths)
+
+# ebola starting datasets for examples
+.ebnola_ex1 <- .ebola_baseline_tidy %>%
+  drop_na() %>%
+  select(-deaths) %>%
+  pivot_wider(names_from = day, values_from = cases)
+
+.ebola_ex2 <- .ebola_csv %>%
+  rename(date = Date, day = Day)
+
+.ebola_ex3 <- .ebola_csv %>%
+  rename(date = Date, day = Day)
+
+# solution dataframes for each example
+
+solution_tidy1 <- .ebnola_ex1 %>%
+  pivot_longer(`289`:last_col(), names_to = "day", values_to = "cases") %>%
+  drop_na()
+
+solution_tidy2 <- .ebola_ex2 %>%
+  pivot_longer(cols = c(-date, -day)) %>%
+  separate(name, into = c("case_death", "country"), sep = "_") %>%
+  drop_na()
+
+solution_tidy3 <- .ebola_ex3 %>%
+  pivot_longer(cols = c(-date, -day)) %>%
+  separate(name, into = c("case_death", "country"), sep = "_") %>%
+  pivot_wider(names_from = case_death, values_from = value) %>%
+  drop_na()
+
+.cmv <- medicaldata::cytomegalovirus
+
+dirty <- .cmv %>%
+  select(ID, age, prior.radiation, aKIRs, cmv, donor.cmv, recipient.cmv) %>%
+  mutate(recipient.cmv = recode(recipient.cmv,
+                                `0` = "recipient_negative",
+                                `1` = "recipient_positive")) %>%
+  pivot_wider(names_from = donor.cmv,
+              values_from = recipient.cmv) %>%
+  rename(donor_negative = `0`,
+         donor_positive = `1`)
+
+clean <- dirty %>%
+  pivot_longer(cols = c(donor_negative, donor_positive),
+               names_to = "donor_status",
+               values_to = "recipient_status",
+               values_drop_na = TRUE)
+
+writexl::write_xlsx(dirty, "data/cmv.xlsx")
+```

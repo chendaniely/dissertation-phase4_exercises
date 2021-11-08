@@ -1,0 +1,3 @@
+```{r ex3-setup}
+ebola <- .ebola_ex2
+```

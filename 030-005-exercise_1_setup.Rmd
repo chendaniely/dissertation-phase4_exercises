@@ -1,0 +1,4 @@
+```{r ex1-setup}
+ebola <- .ebnola_ex1
+```
+

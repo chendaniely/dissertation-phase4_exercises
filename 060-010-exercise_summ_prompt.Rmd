@@ -1,0 +1,41 @@
+This is the `cmv` dataset you will load:
+
+```{r, echo=FALSE}
+dirty
+```
+
+1. Use the `readxl` library to load the `data/cmv.xlsx` into a variable, `cmv`
+2. Filter the `cmv` dataset such that only age > 65 are remaining.
+   Save this to a variable, `cmv_subset`.
+3. Save the `cmv_subset` variable to a `csv` file in `"data/cmv_subset.csv"`.
+
+```{r ex-summ1, echo=FALSE, exercise=TRUE, exercise.lines = 5}
+
+```
+
+4. Tidy the `cmv` dataset such that it looks like the `clean` dataset below.
+   Save the tidy dataset into a varialbe, `cmv_tidy`.
+
+```{r, echo=FALSE}
+clean
+```
+
+```{r ex-summ2-setup}
+cmv <- dirty
+```
+
+
+```{r ex-summ2, echo=FALSE, exercise=TRUE, exercise.lines = 5}
+cmv
+```
+
+5. In the `cmv_tidy` dataset, calculate the average `age` for each value of `cmv`.
+
+```{r ex-summ3-setup}
+cmv_tidy <- clean
+```
+
+
+```{r ex-summ3, echo=FALSE, exercise=TRUE, exercise.lines = 5}
+cmv_tidy
+```

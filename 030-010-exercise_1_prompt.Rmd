@@ -1,0 +1,13 @@
+Take a look at the `ebola` dataset.
+
+```{r, echo=FALSE}
+ebola
+```
+
+- Tidy the dataset such that you get the dataset below.
+- You can use the `last_col()` to select the last column of the dataset.
+- Remember to drop missing values as the last step.
+
+```{r, echo=FALSE}
+solution_tidy1
+```

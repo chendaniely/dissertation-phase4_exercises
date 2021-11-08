@@ -1,0 +1,11 @@
+```{r ex1}
+#| eval=FALSE,
+#| echo=FALSE,
+#| exercise=TRUE,
+#| exercise.lines = 5,
+#| exercise.reveal_solution = FALSE
+
+ebola %>%
+  ____(____, names_to = ____, values_to = ____) %>%
+  ____()
+```
