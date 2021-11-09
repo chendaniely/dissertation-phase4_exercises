@@ -1,4 +1,4 @@
 ```{r ex1-setup}
-ebola <- .ebnola_ex1
+ebola <- .ebola_ex1
 ```
 

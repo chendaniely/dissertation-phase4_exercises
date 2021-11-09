@@ -1,9 +1,1 @@
-```{r ex1-solution}
-ebola %>%
-  pivot_longer(`289`:last_col(), names_to = "day", values_to = "cases") %>%
-  drop_na()
-```
- 
-```{r ex1-code-check}
-gradethis::grade_code()
-```
+<!-- gradethis doesn't support child docs (yet)-->

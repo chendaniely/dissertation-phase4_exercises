@@ -7,232 +7,80 @@ output:
 runtime: shiny_prerendered
 ---
 
-```{r setup, include=FALSE}
-library(tidyverse)
-library(medicaldata)
-library(janitor)
-library(learnr)
-library(gradethis)
-library(fs)
-library(readxl)
-knitr::opts_chunk$set(echo = FALSE)
-
-fs::dir_create("data")
-
-try({
-  fs::file_delete("010.html")
-})
-
-
-download.file("https://github.com/chendaniely/ds4biomed/blob/learner/data/medicaldata_tumorgrowth.xlsx?raw=true", "data/medicaldata_tumorgrowth.xlsx", mode = "wb")
-
-download.file("https://raw.githubusercontent.com/cmrivers/ebola/master/country_timeseries.csv", "data/ebola.csv")
-
-.ebola <- read_csv("data/ebola.csv")
-
-.ebola_baseline_tidy <- .ebola %>%
-  rename(date = Date, day = Day) %>%
-  pivot_longer(cols = c(-date, -day)) %>%
-  separate(name, into = c("case_death", "country"), sep = "_") %>%
-  pivot_wider(names_from = case_death, values_from = value) %>%
-  rename(cases = Cases, deaths = Deaths)
+```{r, include=FALSE, child="../010-setup.Rmd"}
 ```
 
-## Pre-Workshop Exercise
-
-Please write the code for the following pipeline steps:
-
-1.  Load the `tidyverse` and `readxl` libraries.
-2.  Read in the Excel file located in: `"data/medicaldata_tumorgrowth.xlsx"` into a variable `tumor`.
-3.  Select the all the columns except `Grp`, and filter the rows such that Day is `0` or `20`. Save this data subset into a variable `tumor_subset`.
-4.  We want to compare baseline tumor sizes (Day 0) with tumor sizes at Day 20 between each of the groups.
-    - Using `tumor_subset`, calculate the average tumor `Size` for each `Grp` and `Day`.
-5.  Save `tumor_subset` into a CSV file located in "data/tumorsubset.csv".
-
-```{r pre-workshop, echo=FALSE, exercise=TRUE, exercise.lines = 20}
-
-```
-
-```{r, include=FALSE}
-# solution
-library(tidyverse)
-library(readxl)
-
-.tumor <- read_excel("data/medicaldata_tumorgrowth.xlsx")
-
-.tumor_subset <- .tumor %>%
-  select(-Grp) %>%
-  filter(Day == 0 | Day == 20)
-
-.tumor_subset %>%
-  group_by(Group, Day) %>%
-  summarize(mean(Size))
-
-write_csv(.tumor_subset, "data/tumorsubset_solution.csv")
+```{r,  child="../020-010-pre_workshop_exercise.Rmd"}
 ```
 
 ## Exercise 1
 
-Take a look at the `ebola` dataset.
-
-```{r, include=FALSE}
-.ebola <- .ebola_baseline_tidy %>%
-  drop_na() %>%
-  select(-deaths) %>%
-  pivot_wider(names_from = day, values_from = cases)
-
-ebola <- .ebola
+```{r,  child="../030-005-exercise_1_setup.Rmd"}
 ```
 
-```{r, echo=TRUE}
-ebola
+```{r,  child="../030-010-exercise_1_prompt.Rmd"}
 ```
 
-- Tidy the dataset such that you get the dataset below.
-- You can use the `last_col()` to select the last column of the dataset.
-- Remember to drop missing values as the last step.
+```{r,  child="../030-030-exercise_1_faded.Rmd"}
+```
 
-```{r, include=FALSE}
-# solution
-solution_tidy1 <- ebola %>%
+```{r ex1-solution}
+ebola %>%
   pivot_longer(`289`:last_col(), names_to = "day", values_to = "cases") %>%
   drop_na()
 ```
 
-```{r, echo=FALSE}
-solution_tidy1
+```{r ex1-code-check}
+gradethis::grade_code()
 ```
 
-```{r ex1, eval=FALSE, echo=FALSE, exercise=TRUE, exercise.lines = 5}
-ebola %>%
-  ____(____, names_to = ____, values_to = ____) %>%
-  ____()
-```
-
-```{r, include=FALSE}
-
-```
 
 ## Exercise 2
 
-This is a different version of the `ebola` dataset.
+```{r, child="../040-010-exercise_2_setup.Rmd"}
+```
 
-```{r, include=FALSE}
-ebola <- read_csv("data/ebola.csv") %>%
-  rename(date = Date, day = Day)
+```{r, child="../040-020-exercise_2_prompt.Rmd"}
+```
 
-solution_tidy2 <- ebola %>%
+```{r, child="../040-040-exercise_2_faded.Rmd"}
+```
+
+```{r ex2-solution}
+ebola %>%
   pivot_longer(cols = c(-date, -day)) %>%
   separate(name, into = c("case_death", "country"), sep = "_") %>%
   drop_na()
 ```
 
-```{r}
-ebola
-```
-
-- Tidy the dataset such that you get the dataset below
-- Remember to drop missing values as the last step
-
-```{r, echo=FALSE}
-solution_tidy2
-```
-
-```{r ex2, eval=FALSE, echo=FALSE, exercise=TRUE, exercise.lines = 5}
-ebola %>%
-  ____(____) %>%
-  ____(____, into = ____, sep = ____) %>%
-  ____
+```{r ex2-code-check}
+gradethis::grade_code()
 ```
 
 ## Exercise 3
 
-```{r, include=FALSE}
-ebola <- read_csv("data/ebola.csv") %>%
-  rename(date = Date, day = Day)
+```{r, child="../050-010-exercise_3_setup.Rmd"}
+```
 
+```{r, child="../050-020-exercise_3_prompt.Rmd"}
+```
 
-solution_tidy3 <- ebola %>%
+```{r, child="../050-040-exercise_3_faded.Rmd"}
+```
+
+```{r ex3-solution}
+ebola %>%
   pivot_longer(cols = c(-date, -day)) %>%
   separate(name, into = c("case_death", "country"), sep = "_") %>%
   pivot_wider(names_from = case_death, values_from = value) %>%
   drop_na()
 ```
 
-Using the same `ebola` dataset example from the previous exercise:
-
-```{r}
-ebola
-```
-
-- Tidy the dataset such that it looks like the below example
-- Remember to drop missing values as the last step
-
-```{r, echo=FALSE}
-solution_tidy3
-```
-
-
-```{r ex3, eval=FALSE, echo=FALSE, exercise=TRUE, exercise.lines = 5}
-ebola %>%
-  ____(____) %>%
-  separate(name, into = c("case_death", "country"), sep = "_") %>%
-  ____(names_from = case_death, values_from = value) %>%
-  ____
+```{r ex3-code-check}
+gradethis::grade_code()
 ```
 
 ## Summative
 
-```{r, include=FALSE}
-.cmv <- medicaldata::cytomegalovirus
-
-dirty <- .cmv %>%
-  select(ID, age, prior.radiation, aKIRs, cmv, donor.cmv, recipient.cmv) %>%
-  mutate(recipient.cmv = recode(recipient.cmv,
-                                `0` = "recipient_negative",
-                                `1` = "recipient_positive")) %>%
-  pivot_wider(names_from = donor.cmv,
-              values_from = recipient.cmv) %>%
-  rename(donor_negative = `0`,
-         donor_positive = `1`)
-
-clean <- dirty %>%
-  pivot_longer(cols = c(donor_negative, donor_positive),
-               names_to = "donor_status",
-               values_to = "recipient_status",
-               values_drop_na = TRUE)
-
-library(writexl)
-
-writexl::write_xlsx(dirty, "data/cmv.xlsx")
-```
-
-This is the `cmv` dataset you will load:
-
-```{r, echo=FALSE}
-dirty
-```
-
-1. Use the `readxl` library to load the `data/cmv.xlsx` into a variable, `cmv`
-2. Filter the `cmv` dataset such that only age > 65 are remaining. Save this to a variable, `cmv_subset`.
-3. Save the `cmv_subset` variable to a `csv` file in `"data/cmv_subset.csv"`.
-
-```{r ex-summ1, echo=FALSE, exercise=TRUE, exercise.lines = 5}
-
-```
-
-4. Tidy the `cmv` dataset such that it looks like the `clean` dataset below. Save the tidy dataset into a varialbe, `cmv_tidy`.
-
-```{r}
-clean
-```
-
-```{r ex-summ2, echo=FALSE, exercise=TRUE, exercise.lines = 5}
-
-```
-
-5. In the `cmv_tidy` dataset, calculate the average `age` for each value of `cmv`.
-
-```{r ex-summ3, echo=FALSE, exercise=TRUE, exercise.lines = 5}
-
+```{r, child="../060-010-exercise_summ_prompt.Rmd"}
 ```

@@ -1,7 +1,7 @@
 Take a look at the `ebola` dataset.
 
 ```{r, echo=FALSE}
-.ebnola_ex1
+.ebola_ex1
 ```
 
 - Tidy the dataset such that you get the dataset below.
