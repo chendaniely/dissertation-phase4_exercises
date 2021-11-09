@@ -16,9 +16,11 @@ runtime: shiny_prerendered
 ## Exercise 1
 
 ```{r,  child="../030-005-exercise_1_setup.Rmd"}
+# holds ex1-setup chunk
 ```
 
 ```{r,  child="../030-010-exercise_1_prompt.Rmd"}
+# holds ex1-prompt
 ```
 
 ```{r,  child="../030-020-exercise_1_blank.Rmd"}

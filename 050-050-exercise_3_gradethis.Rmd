@@ -1,0 +1,11 @@
+```{r ex3-solution, eval=FALSE, echo=FALSE}
+ebola %>%
+  pivot_longer(cols = c(-date, -day)) %>%
+  separate(name, into = c("case_death", "country"), sep = "_") %>%
+  pivot_wider(names_from = case_death, values_from = value) %>%
+  drop_na()
+```
+
+```{r ex3-code-check, eval=FALSE, echo=FALSE}
+gradethis::grade_code()
+```

@@ -21,19 +21,14 @@ runtime: shiny_prerendered
 ```{r,  child="../030-010-exercise_1_prompt.Rmd"}
 ```
 
+```{r,  child="../030-040-exercise_1_gradethis.Rmd"}
+# contains ex1-solution chunk
+# contains ex1-code-check chunk
+```
+
 ```{r,  child="../030-020-exercise_1_blank.Rmd"}
+# contains ex1 chunk
 ```
-
-```{r ex1-solution}
-ebola %>%
-  pivot_longer(`289`:last_col(), names_to = "day", values_to = "cases") %>%
-  drop_na()
-```
-
-```{r ex1-code-check}
-gradethis::grade_code()
-```
-
 
 ## Exercise 2
 
@@ -43,18 +38,13 @@ gradethis::grade_code()
 ```{r, child="../040-020-exercise_2_prompt.Rmd"}
 ```
 
+```{r, child="../040-050-exercise_2_gradethis.Rmd"}
+# contains ex2-solution chunk
+# contains ex2-code-check chunk
+```
+
 ```{r, child="../040-030-exercise_2_blank.Rmd"}
-```
-
-```{r ex2-solution}
-ebola %>%
-  pivot_longer(cols = c(-date, -day)) %>%
-  separate(name, into = c("case_death", "country"), sep = "_") %>%
-  drop_na()
-```
-
-```{r ex2-code-check}
-gradethis::grade_code()
+# contains ex2 chunk
 ```
 
 ## Exercise 3
@@ -65,19 +55,13 @@ gradethis::grade_code()
 ```{r, child="../050-020-exercise_3_prompt.Rmd"}
 ```
 
+```{r, child="../050-050-exercise_3_gradethis.Rmd"}
+# contains ex3-solution chunk
+# contains ex3-code-check chunk
+```
+
 ```{r, child="../050-030-exercise_3_blank.Rmd"}
-```
-
-```{r ex3-solution}
-ebola %>%
-  pivot_longer(cols = c(-date, -day)) %>%
-  separate(name, into = c("case_death", "country"), sep = "_") %>%
-  pivot_wider(names_from = case_death, values_from = value) %>%
-  drop_na()
-```
-
-```{r ex3-code-check}
-gradethis::grade_code()
+# contains ex3 chunk
 ```
 
 ## Summative
