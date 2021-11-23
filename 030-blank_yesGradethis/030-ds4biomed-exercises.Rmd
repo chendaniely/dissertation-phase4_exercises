@@ -16,16 +16,19 @@ runtime: shiny_prerendered
 ## Exercise 1
 
 ```{r,  child="./030-005-exercise_1_setup.Rmd"}
-# holds ex1-setup chunk
 ```
 
 ```{r,  child="./030-010-exercise_1_prompt.Rmd"}
-# holds ex1-prompt
+```
+
+```{r,  child="./030-040-exercise_1_gradethis.Rmd"}
+# contains ex1-solution chunk
+# contains ex1-code-check chunk
 ```
 
 ```{r,  child="./030-020-exercise_1_blank.Rmd"}
+# contains ex1 chunk
 ```
-
 
 ## Exercise 2
 
@@ -35,7 +38,13 @@ runtime: shiny_prerendered
 ```{r, child="./040-020-exercise_2_prompt.Rmd"}
 ```
 
+```{r, child="./040-050-exercise_2_gradethis.Rmd"}
+# contains ex2-solution chunk
+# contains ex2-code-check chunk
+```
+
 ```{r, child="./040-030-exercise_2_blank.Rmd"}
+# contains ex2 chunk
 ```
 
 ## Exercise 3
@@ -46,7 +55,13 @@ runtime: shiny_prerendered
 ```{r, child="./050-020-exercise_3_prompt.Rmd"}
 ```
 
+```{r, child="./050-050-exercise_3_gradethis.Rmd"}
+# contains ex3-solution chunk
+# contains ex3-code-check chunk
+```
+
 ```{r, child="./050-030-exercise_3_blank.Rmd"}
+# contains ex3 chunk
 ```
 
 ## Summative
