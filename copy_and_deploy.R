@@ -16,7 +16,7 @@ learnr_dirs <- fs::dir_ls(path = ".",
                           regexp = "\\d{3}-"
                           )
 
-stopifnot(length(learnr_dirs) == 4)
+stopifnot(length(learnr_dirs) == 5)
 
 rmarkdown::find_external_resources("010-blank_noGradethis/010-ds4biomed-exercises.Rmd")
 rmarkdown::find_external_resources("040-faded_yesGradethis/040-ds4biomed-exercises.Rmd")

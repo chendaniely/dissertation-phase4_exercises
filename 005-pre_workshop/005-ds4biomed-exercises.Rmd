@@ -1,0 +1,14 @@
+---
+title: "ds4biomed"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: false
+runtime: shiny_prerendered
+---
+
+```{r, include=FALSE, child="./010-setup.Rmd"}
+```
+
+```{r,  child="./020-010-pre_workshop_exercise.Rmd"}
+```
